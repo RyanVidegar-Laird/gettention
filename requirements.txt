@@ -1,0 +1,10 @@
+torch==2.1.0
+numpy
+scanpy
+pandas
+pyarrow
+scikit-learn
+matplotlib
+seaborn
+snakemake
+jupyterlab
