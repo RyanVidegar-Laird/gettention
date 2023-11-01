@@ -1,6 +1,6 @@
 rule all:
     input:
-	    'data/pfalciparum/pf10xIDC.h5ad.gz'
+	    'data/pfalciparum/pf10xIDC.gz.h5ad'
 
 rule fetch_process_pfaciparum:
 	input:
@@ -8,7 +8,7 @@ rule fetch_process_pfaciparum:
 	output:
 		raw_counts = 'data/pfalciparum/pf10xIDC_counts.arrow',
 		pheno = 'data/pfalciparum/pf10xIDC_pheno.arrow',
-		anndata = 'data/pfalciparum/pf10xIDC.h5ad.gz'	
+		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad'	
 	params:
 		MCA_Commit = "4e19a713d0681b118cc7e229133489f039b8766b"
 	shell:

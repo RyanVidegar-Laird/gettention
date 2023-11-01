@@ -39,4 +39,4 @@ df_raw_counts.to_feather(DATA_PATH / 'pf10xIDC_counts.arrow')
 df_pheno.to_feather(DATA_PATH /'pf10xIDC_pheno.arrow')
 
 # Save AnnData object as .h5ad (basically a hdf5 with some addtl. metadata for Scanpy & other libs
-adata.write_h5ad(DATA_PATH / "pf10xIDC.h5ad.gz", compression='gzip')
+adata.write_h5ad(DATA_PATH / "pf10xIDC.gz.h5ad", compression='gzip')
