@@ -1,6 +1,10 @@
 # Project Specific
 /.snakemake/
-/report/.midway_report/
+/report/*/*.aux
+/report/*/*.bbl
+/report/*/*.log
+/report/*/*.out
+/report/*/*.blg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
