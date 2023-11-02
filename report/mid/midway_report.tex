@@ -1,5 +1,6 @@
 \documentclass{article}
 
+\PassOptionsToPackage{numbers, sectionbib}{natbib}
 \usepackage[final]{neurips_2018} % provided style file
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
@@ -18,6 +19,8 @@
 \usepackage{subcaption} % For subfigures
 
 \bibliographystyle{plainnat}
+\usepackage{float}
+
 
 \title{Predicting Cell Types in Non-Human Single Cell RNA Sequencing Data}
 
@@ -35,20 +38,17 @@
 \maketitle
 
 \section{Introduction}
-\label{intro}
 
 Single cell RNA sequencing data is eventually processed into a gene expression matrix, which has dimensions of m cells x n genes. After performing quality control steps, normalizing and scaling this gene expression matrix, this matrix undergoes dimensionality reduction to compress this dataset that contains many features (genes) to see how these cells relate to one another. The patterns of how cells vary compared to one another can be clustered using any algorithm of one’s choosing. The resulting clusters represent certain types of cells that need to be characterized and classified.
 
 Classifying single cells has mainly focused on utilizing three categories of techniques. The first class of techniques annotate these clusters through comparing the differential expression (greater number of counts) of the genes in a given cluster with every other cluster through statistical tests, like the Wilcoxian rank sum test. These differentially abundant genes in each cluster can be compared to experimentally validated genes that characterize cell types to identify the label for that cluster. The second class of techniques correlates the newly generated dataset with a reference dataset to annotate cell clusters. This reference dataset can be other single cell RNA sequencing data or bulk RNA sequencing of specific cell types individually or over a time series. Lastly, the third class of techniques uses supervised learning, which utilizes previously generated data to train a model to classify cell types. Some examples of potential models to implement could be logistic regression, support vector machine or random forest, to name a few.
 
-Many of these tasks have been focused on human data, where there has been much focus on diseases, like different forms of cancer, that affect many people domestically, but not much focus on diseases that have broad impacts globally. One such disease is malaria, a parasitic infection that resulted in 247 million cases in 2021 and causes a large burden of morbidity and mortality globally [world malaria report]. Malaria has a complex life cycle, which starts in the mosquito vector to result in infection of a human host. When individuals are sick with malaria, the parasite replicates in the blood cells and causes these blood cells to lyse when the parasite replicates. These replication stages have unique gene expression patterns and single cell RNA sequencing provides a key benefit to further understand how these genes change per cell stage. These same concepts can be applied to other neglected diseases and hosts. From looking at developmental trajectories in zebrafish [cite] to COVID-19 response in non-human primates [cite] to single cell RNA sequencing of other parasitic diseases [citations], we would like to build a powerful, simple and efficient model that can classify cell types on this source of data.
-
-
-
 \subsection{Related Work}
+Many of these tasks have been focused on human data, where there has been much focus on diseases, like different forms of cancer, that affect many people domestically, but not much focus on diseases that have broad impacts globally. One such disease is malaria, a parasitic infection that resulted in 247 million cases in 2021 and causes a large burden of morbidity and mortality globally \cite{monroeReflections2021World2022}. Malaria has a complex life cycle, which starts in the mosquito vector to result in infection of a human host. When individuals are sick with malaria, the parasite replicates in the blood cells and causes these blood cells to lyse when the parasite replicates. These replication stages have unique gene expression patterns and single cell RNA sequencing provides a key benefit to further understand how these genes change per cell stage. These same concepts can be applied to other neglected diseases and hosts. From looking at developmental trajectories in zebrafish \cite{farrellSinglecellReconstructionDevelopmental2018} to COVID-19 response in non-human primates \cite{speranzaSinglecellRNASequencing2021} to single cell RNA sequencing of other parasitic diseases \cite{briggsSinglecellTranscriptomicAnalysis2021, howickMalariaCellAtlas2019, rezvaniComparativeSinglecellTranscriptional2022}, \cite{wendtSinglecellRNAseqAtlas2020}, we would like to build a powerful, simple and efficient model that can classify cell types on this source of data.
 
 
-\subsection{Methods}
+\section{Methods}
+
 \begin{itemize}
 
 \item QC dataset to normalization
@@ -76,7 +76,11 @@ Many of these tasks have been focused on human data, where there has been much f
 
 \section{Preliminary Results}
 
-\begin{table}[h]
+\subsection{Dataset Preprocessing}
+
+We are pre-processing and organizing existing datasets...
+
+\begin{table}[!h]
   \caption{Summary of datasets that will be used in this study.}
   \label{tab:summary}
   \centering
@@ -84,7 +88,7 @@ Many of these tasks have been focused on human data, where there has been much f
     \toprule
     \textbf{Host} & \textbf{Source} & \textbf{Reference} & \textbf{Cells} \\
     \midrule
-    Parasite & \href{https://github.com/vhowick/MalariaCellAtlas/tree/master/Expression_Matrices10X/pf10xIDC}{GitHub} & Howick et al. 2019 & 6,737 \\
+    Parasite & \href{https://github.com/vhowick/MalariaCellAtlas/tree/master/Expression_Matrices10X/pf10xIDC}{GitHub} & \citet{howickMalariaCellAtlas2019} & 6,737 \\
     \midrule
     Parasite & GSE146737 & Wendt et al. 2020 & 43,642 \\
     \midrule
@@ -107,13 +111,19 @@ Many of these tasks have been focused on human data, where there has been much f
   \end{tabularx}
 \end{table}
 
-\begin{figure}
+\subsection{Initial Modeling}
+
+As our first run-through, we are using the small P. falciparium dataset from ...
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/pca_Pf.png}
   \caption{Principal components analysis of \textit{P. falciparum} single cell RNA sequencing data, colored by lifecycle stage.}
 \end{figure}
 
-\begin{figure}[htbp]
+This dataset is simple enough that most predictors perform quite well...
+
+\begin{figure}[!h]
   \centering
   
   \begin{subfigure}[b]{0.3\textwidth}
@@ -138,14 +148,19 @@ Many of these tasks have been focused on human data, where there has been much f
   \label{fig:main}
 \end{figure}
 
-\begin{figure}
+Each IDC stage can be predicted with good precision and recall. 
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/Pf_prediction.png}
   \caption{Prediction accuracy of models on \textit{P. falciparum} single cell RNA sequencing data.}
 \end{figure}
 
+\medskip
 
-\cite{yangScBERTLargescalePretrained2022}
+\section{Future Work}
+
+\newpage
 
 \bibliography{midway_report}
 
