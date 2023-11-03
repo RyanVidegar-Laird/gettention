@@ -1,3 +1,19 @@
+@article{aljanahiIntroductionAnalysisSingleCell2018,
+  title = {An {{Introduction}} to the {{Analysis}} of {{Single-Cell RNA-Sequencing Data}}},
+  author = {AlJanahi, Aisha A. and Danielsen, Mark and Dunbar, Cynthia E.},
+  year = {2018},
+  month = sep,
+  journal = {Molecular Therapy. Methods \& Clinical Development},
+  volume = {10},
+  pages = {189--196},
+  issn = {2329-0501},
+  doi = {10.1016/j.omtm.2018.07.003},
+  abstract = {The recent development of single-cell RNA sequencing has deepened our understanding of the cell as a functional unit, providing new insights based on gene expression profiles of hundreds to hundreds of thousands of individual cells, and revealing new populations of cells with distinct gene expression profiles previously hidden within analyses of gene expression performed on bulk cell populations. However, appropriate analysis and utilization of the massive amounts of data generated from single-cell RNA sequencing experiments are challenging and require an understanding of the experimental and computational pathways taken between preparation of input cells and output of interpretable data. In this review, we will discuss the basic principles of these new technologies, focusing on concepts important in the analysis of single-cell RNA-sequencing data. Specifically, we summarize approaches to quality-control measures for determination of which single cells to include for further examination, methods of data normalization and scaling to overcome the relatively inefficient capture rate of mRNA from each cell, and clustering and visualization algorithms used for dimensional reduction of the data to a two-dimensional plot.},
+  langid = {english},
+  pmcid = {PMC6072887},
+  pmid = {30094294}
+}
+
 @article{briggsSinglecellTranscriptomicAnalysis2021,
   title = {Single-Cell Transcriptomic Analysis of Bloodstream {{Trypanosoma}} Brucei Reconstructs Cell Cycle Progression and Developmental Quorum Sensing},
   author = {Briggs, Emma M. and Rojas, Federico and McCulloch, Richard and Matthews, Keith R. and Otto, Thomas D.},
@@ -32,6 +48,21 @@
   langid = {english}
 }
 
+@misc{childGeneratingLongSequences2019,
+  title = {Generating {{Long Sequences}} with {{Sparse Transformers}}},
+  author = {Child, Rewon and Gray, Scott and Radford, Alec and Sutskever, Ilya},
+  year = {2019},
+  month = apr,
+  number = {arXiv:1904.10509},
+  eprint = {1904.10509},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1904.10509},
+  abstract = {Transformers are powerful sequence models, but require time and memory that grows quadratically with the sequence length. In this paper we introduce sparse factorizations of the attention matrix which reduce this to \$O(n \textbackslash sqrt\{n\})\$. We also introduce a) a variation on architecture and initialization to train deeper networks, b) the recomputation of attention matrices to save memory, and c) fast attention kernels for training. We call networks with these changes Sparse Transformers, and show they can model sequences tens of thousands of timesteps long using hundreds of layers. We use the same architecture to model images, audio, and text from raw bytes, setting a new state of the art for density modeling of Enwik8, CIFAR-10, and ImageNet-64. We generate unconditional samples that demonstrate global coherence and great diversity, and show it is possible in principle to use self-attention to model sequences of length one million or more.},
+  archiveprefix = {arXiv}
+}
+
 @misc{choromanskiRethinkingAttentionPerformers2022,
   title = {Rethinking {{Attention}} with {{Performers}}},
   author = {Choromanski, Krzysztof and Likhosherstov, Valerii and Dohan, David and Song, Xingyou and Gane, Andreea and Sarlos, Tamas and Hawkins, Peter and Davis, Jared and Mohiuddin, Afroz and Kaiser, Lukasz and Belanger, David and Colwell, Lucy and Weller, Adrian},
@@ -44,6 +75,37 @@
   publisher = {{arXiv}},
   doi = {10.48550/arXiv.2009.14794},
   abstract = {We introduce Performers, Transformer architectures which can estimate regular (softmax) full-rank-attention Transformers with provable accuracy, but using only linear (as opposed to quadratic) space and time complexity, without relying on any priors such as sparsity or low-rankness. To approximate softmax attention-kernels, Performers use a novel Fast Attention Via positive Orthogonal Random features approach (FAVOR+), which may be of independent interest for scalable kernel methods. FAVOR+ can be also used to efficiently model kernelizable attention mechanisms beyond softmax. This representational power is crucial to accurately compare softmax with other kernels for the first time on large-scale tasks, beyond the reach of regular Transformers, and investigate optimal attention-kernels. Performers are linear architectures fully compatible with regular Transformers and with strong theoretical guarantees: unbiased or nearly-unbiased estimation of the attention matrix, uniform convergence and low estimation variance. We tested Performers on a rich set of tasks stretching from pixel-prediction through text models to protein sequence modeling. We demonstrate competitive results with other examined efficient sparse and dense attention methods, showcasing effectiveness of the novel attention-learning paradigm leveraged by Performers.},
+  archiveprefix = {arXiv}
+}
+
+@article{crickCentralDogmaMolecular1970,
+  title = {Central Dogma of Molecular Biology},
+  author = {Crick, F.},
+  year = {1970},
+  month = aug,
+  journal = {Nature},
+  volume = {227},
+  number = {5258},
+  pages = {561--563},
+  issn = {0028-0836},
+  doi = {10.1038/227561a0},
+  langid = {english},
+  pmid = {4913914}
+}
+
+@misc{daiTransformerXLAttentiveLanguage2019,
+  title = {Transformer-{{XL}}: {{Attentive Language Models Beyond}} a {{Fixed-Length Context}}},
+  shorttitle = {Transformer-{{XL}}},
+  author = {Dai, Zihang and Yang, Zhilin and Yang, Yiming and Carbonell, Jaime and Le, Quoc V. and Salakhutdinov, Ruslan},
+  year = {2019},
+  month = jun,
+  number = {arXiv:1901.02860},
+  eprint = {1901.02860},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1901.02860},
+  abstract = {Transformers have a potential of learning longer-term dependency, but are limited by a fixed-length context in the setting of language modeling. We propose a novel neural architecture Transformer-XL that enables learning dependency beyond a fixed length without disrupting temporal coherence. It consists of a segment-level recurrence mechanism and a novel positional encoding scheme. Our method not only enables capturing longer-term dependency, but also resolves the context fragmentation problem. As a result, Transformer-XL learns dependency that is 80\% longer than RNNs and 450\% longer than vanilla Transformers, achieves better performance on both short and long sequences, and is up to 1,800+ times faster than vanilla Transformers during evaluation. Notably, we improve the state-of-the-art results of bpc/perplexity to 0.99 on enwiki8, 1.08 on text8, 18.3 on WikiText-103, 21.8 on One Billion Word, and 54.5 on Penn Treebank (without finetuning). When trained only on WikiText-103, Transformer-XL manages to generate reasonably coherent, novel text articles with thousands of tokens. Our code, pretrained models, and hyperparameters are available in both Tensorflow and PyTorch.},
   archiveprefix = {arXiv}
 }
 
@@ -74,6 +136,15 @@
   doi = {10.48550/arXiv.2006.12138},
   abstract = {In this paper we present Spektral, an open-source Python library for building graph neural networks with TensorFlow and the Keras application programming interface. Spektral implements a large set of methods for deep learning on graphs, including message-passing and pooling operators, as well as utilities for processing graphs and loading popular benchmark datasets. The purpose of this library is to provide the essential building blocks for creating graph neural networks, focusing on the guiding principles of user-friendliness and quick prototyping on which Keras is based. Spektral is, therefore, suitable for absolute beginners and expert deep learning practitioners alike. In this work, we present an overview of Spektral's features and report the performance of the methods implemented by the library in scenarios of node classification, graph classification, and graph regression.},
   archiveprefix = {arXiv}
+}
+
+@misc{hansenTENxPBMCData2018,
+  title = {{{TENxPBMCData}}},
+  author = {Hansen, Kasper and Risso, Davide and Hicks, Stephanie},
+  year = {2018},
+  doi = {10.18129/B9.BIOC.TENXPBMCDATA},
+  collaborator = {Malfait, Milan and Gillis, Jeroen and Killian, Theodore and Kose, Murat and Tang, Chong and {van den Brand}, Teun and Machlab, Dania},
+  howpublished = {Bioconductor}
 }
 
 @article{harrisArrayProgrammingNumPy2020,
@@ -154,6 +225,37 @@
   archiveprefix = {arXiv}
 }
 
+@misc{kipfSemiSupervisedClassificationGraph2017,
+  title = {Semi-{{Supervised Classification}} with {{Graph Convolutional Networks}}},
+  author = {Kipf, Thomas N. and Welling, Max},
+  year = {2017},
+  month = feb,
+  number = {arXiv:1609.02907},
+  eprint = {1609.02907},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1609.02907},
+  abstract = {We present a scalable approach for semi-supervised learning on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs. We motivate the choice of our convolutional architecture via a localized first-order approximation of spectral graph convolutions. Our model scales linearly in the number of graph edges and learns hidden layer representations that encode both local graph structure and features of nodes. In a number of experiments on citation networks and on a knowledge graph dataset we demonstrate that our approach outperforms related methods by a significant margin.},
+  archiveprefix = {arXiv}
+}
+
+@misc{kitaevReformerEfficientTransformer2020,
+  title = {Reformer: {{The Efficient Transformer}}},
+  shorttitle = {Reformer},
+  author = {Kitaev, Nikita and Kaiser, Łukasz and Levskaya, Anselm},
+  year = {2020},
+  month = feb,
+  number = {arXiv:2001.04451},
+  eprint = {2001.04451},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.2001.04451},
+  abstract = {Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O(\$L\^2\$) to O(\$L\textbackslash log L\$), where \$L\$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of \$N\$ times, where \$N\$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.},
+  archiveprefix = {arXiv}
+}
+
 @article{lawlorSinglecellTranscriptomesIdentify2017,
   title = {Single-Cell Transcriptomes Identify Human Islet Cell Signatures and Reveal Cell-Type–Specific Expression Changes in Type 2 Diabetes},
   author = {Lawlor, Nathan and George, Joshy and Bolisetty, Mohan and Kursawe, Romy and Sun, Lili and Sivakamasundari, V. and Kycia, Ina and Robson, Paul and Stitzel, Michael L.},
@@ -212,6 +314,22 @@
   doi = {10.25080/Majora-92bf1922-00a}
 }
 
+@misc{meritySingleHeadedAttention2019,
+  title = {Single {{Headed Attention RNN}}: {{Stop Thinking With Your Head}}},
+  shorttitle = {Single {{Headed Attention RNN}}},
+  author = {Merity, Stephen},
+  year = {2019},
+  month = nov,
+  number = {arXiv:1911.11423},
+  eprint = {1911.11423},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1911.11423},
+  abstract = {The leading approaches in language modeling are all obsessed with TV shows of my youth - namely Transformers and Sesame Street. Transformers this, Transformers that, and over here a bonfire worth of GPU-TPU-neuromorphic wafer scale silicon. We opt for the lazy path of old and proven techniques with a fancy crypto inspired acronym: the Single Headed Attention RNN (SHA-RNN). The author's lone goal is to show that the entire field might have evolved a different direction if we had instead been obsessed with a slightly different acronym and slightly different result. We take a previously strong language model based only on boring LSTMs and get it to within a stone's throw of a stone's throw of state-of-the-art byte level language model results on enwik8. This work has undergone no intensive hyperparameter optimization and lived entirely on a commodity desktop machine that made the author's small studio apartment far too warm in the midst of a San Franciscan summer. The final results are achievable in plus or minus 24 hours on a single GPU as the author is impatient. The attention mechanism is also readily extended to large contexts with minimal computation. Take that Sesame Street.},
+  archiveprefix = {arXiv}
+}
+
 @article{molderSustainableDataAnalysis2021,
   title = {Sustainable Data Analysis with {{Snakemake}}},
   author = {Mölder, Felix and Jablonski, Kim Philipp and Letcher, Brice and Hall, Michael B. and {Tomkins-Tinch}, Christopher H. and Sochat, Vanessa and Forster, Jan and Lee, Soohyun and Twardziok, Sven O. and Kanitz, Alexander and Wilm, Andreas and Holtgrewe, Manuel and Rahmann, Sven and Nahnsen, Sven and Köster, Johannes},
@@ -226,21 +344,15 @@
   langid = {english}
 }
 
-@article{monroeReflections2021World2022,
-  title = {Reflections on the 2021 {{World Malaria Report}} and the Future of Malaria Control},
-  author = {Monroe, April and Williams, Nana Aba and Ogoma, Sheila and Karema, Corine and Okumu, Fredros},
+@book{organizationWorldMalariaReport2022,
+  title = {World Malaria Report 2022},
+  author = {Organization, World Health},
   year = {2022},
-  month = may,
-  journal = {Malaria Journal},
-  volume = {21},
-  number = {1},
-  pages = {154},
-  issn = {1475-2875},
-  doi = {10.1186/s12936-022-04178-7},
-  abstract = {The World Malaria Report, released in December 2021, reflects the unique challenges currently facing the global malaria community. The report showed the devastating toll of malaria, with an estimated 627,000 people losing their lives to the disease in 2020. The improved methodological approach used for calculating cause of death for young children revealed a systematic underestimation of disease burden over the past two decades; and that Africa has an even greater malaria crisis than previously known. While countries were able to prevent the worst-case scenarios, the disruptions due to the COVID-19 pandemic revealed how weak health systems and inadequate financing can limit the capacity of the continent to address the malaria challenge. African countries also face a convergence of biological threats that could redefine malaria control, notably widespread pyrethroid resistance and emerging resistance to artemisinin. Despite these challenges, there is cause for optimism in lessons learned from the COVID-19 pandemic, recent acceleration of cutting edge research and development, and new partnerships that encourage leadership from and ownership by affected countries. This article presents key insights from the 2021 World Malaria Report and reflections on the future trajectories: it was informed by an in-depth discussion with leading malaria experts from the World Health Organization (WHO), the Bill \& Melinda Gates Foundation, and the U.S. President's Malaria Initiative (PMI). The discussion took place during the 34th edition of the Ifakara Master Classes, held virtually on December 15th, 2021.},
-  langid = {english},
-  pmcid = {PMC9137259},
-  pmid = {35624483}
+  month = dec,
+  publisher = {{World Health Organization}},
+  abstract = {Each year, WHO’s World malaria report offers in-depth information on the latest trends in malaria control and elimination at global, regional and country levels. The report highlights progress towards global targets and describes opportunities and challenges for curbing and eliminating the disease.This year’s report includes three new sections on: (1) global and regional initiatives launched in 2021 and 2022; (2) global malaria surveillance and country-level case studies on surveillance systems assessments; and (3) research and development. The report also includes an expanded section on threats to malaria control, with a focus on the declining effectiveness of insecticide-treated mosquito nets.},
+  isbn = {978-92-4-006489-8},
+  langid = {english}
 }
 
 @inproceedings{paszkePyTorchImperativeStyle2019,
@@ -282,6 +394,42 @@
   langid = {english},
   pmcid = {PMC9531838},
   pmid = {36137068}
+}
+
+@misc{rissoScRNAseq2017,
+  title = {{{scRNAseq}}},
+  author = {Risso, Davide and Cole, Michael},
+  year = {2017},
+  doi = {10.18129/B9.BIOC.SCRNASEQ},
+  collaborator = {Lun, Aaron and O'Callaghan, Alan and Preussner, Jens and Soneson, Charlotte and Orjuela, Stephany and Bunis, Daniel and Malfait, Milan},
+  howpublished = {Bioconductor}
+}
+
+@article{segundo-valIntroductionGeneExpression2016,
+  title = {Introduction to the {{Gene Expression Analysis}}},
+  author = {{Segundo-Val}, Ignacio San and {Sanz-Lozano}, Catalina S.},
+  year = {2016},
+  journal = {Methods in Molecular Biology (Clifton, N.J.)},
+  volume = {1434},
+  pages = {29--43},
+  issn = {1940-6029},
+  doi = {10.1007/978-1-4939-3652-6_3},
+  abstract = {In 1941, Beadle and Tatum published experiments that would explain the basis of the central dogma of molecular biology, whereby the DNA through an intermediate molecule, called RNA, results proteins that perform the functions in cells. Currently, biomedical research attempts to explain the mechanisms by which develops a particular disease, for this reason, gene expression studies have proven to be a great resource. Strictly, the term "gene expression" comprises from the gene activation until the mature protein is located in its corresponding compartment to perform its function and contribute to the expression of the phenotype of cell.The expression studies are directed to detect and quantify messenger RNA (mRNA) levels of a specific gene. The development of the RNA-based gene expression studies began with the Northern Blot by Alwine et al. in 1977. In 1969, Gall and Pardue and John et al. independently developed the in situ hybridization, but this technique was not employed to detect mRNA until 1986 by Coghlan. Today, many of the techniques for quantification of RNA are deprecated because other new techniques provide more information. Currently the most widely used techniques are qPCR, expression microarrays, and RNAseq for the transcriptome analysis. In this chapter, these techniques will be reviewed.},
+  langid = {english},
+  pmid = {27300529}
+}
+
+@article{shuklaSupervisedLearningPlasmodium2023,
+  title = {Supervised Learning of {{Plasmodium}} Falciparum Life Cycle Stages Using Single-Cell Transcriptomes Identifies Crucial Proteins},
+  author = {Shukla, Swarnim and Choudhuri, Soham and Priya Iragavarapu, Gayathri and Ghosh, Bhaswar},
+  year = {2023},
+  journal = {Journal of Bioinformatics and Systems Biology},
+  volume = {06},
+  number = {01},
+  issn = {26885107},
+  doi = {10.26502/jbsb.5107047},
+  abstract = {Vital gene expressions form the basis for the detection of malaria infection levels. Quantification of infected erythrocytes and classification of their life cycle stages are done at a macroscopic level by experts, for making informed decisions for diagnosis and treatment of malaria. Of late multiple computational approaches have been proposed to circumvent the problem of dimensionality leading to accurately predicted results. In this work, a dimensionality reduction technique based on Genetic Algorithm (GA) is applied to Plasmodium falciparum single cell transcriptomics to arrive at an optimized subset of features from the larger dataset. Features are chosen based on their class variants considering increased efficiency and accuracy, to separately transform the selected elements into a lower dimension. For the classification of the life cycle of malaria parasites based on single cell transcriptome data, a three-pronged approach employing the multiclass Support Vector Machine (SVM), Logistic Regression (LR), and Random Forest (RF) technique is used. Further, we constructed protein interaction networks of the genes identified by the feature selection method and gene ontology analysis elucidated the role of the proteins in the progression of the parasite through its life cycle. Our approach presents a novel protocol to implement ML techniques on scRNA seq datasets and subsequently harness the extracted information for biomarker/drug target detection.},
+  langid = {english}
 }
 
 @article{speranzaSinglecellRNASequencing2021,
@@ -331,6 +479,21 @@
   doi = {10.48550/arXiv.1706.03762},
   abstract = {The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.},
   archiveprefix = {arXiv}
+}
+
+@misc{virshupAnndataAnnotatedData2021,
+  title = {Anndata: {{Annotated}} Data},
+  shorttitle = {Anndata},
+  author = {Virshup, Isaac and Rybakov, Sergei and Theis, Fabian J. and Angerer, Philipp and Wolf, F. Alexander},
+  year = {2021},
+  month = dec,
+  pages = {2021.12.16.473007},
+  publisher = {{bioRxiv}},
+  doi = {10.1101/2021.12.16.473007},
+  abstract = {anndata is a Python package for handling annotated data matrices in memory and on disk (github.com/theislab/anndata), positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface. Statement of need Generating insight from high-dimensional data matrices typically works through training models that annotate observations and variables via low-dimensional representations. In exploratory data analysis, this involves iterative training and analysis using original and learned annotations and task-associated representations. anndata offers a canonical data structure for book-keeping these, which is neither addressed by pandas (McKinney, 2010), nor xarray (Hoyer \& Hamman, 2017), nor commonly-used modeling packages like scikit-learn (Pedregosa et al., 2011).},
+  chapter = {New Results},
+  copyright = {© 2021, Posted by Cold Spring Harbor Laboratory. This pre-print is available under a Creative Commons License (Attribution 4.0 International), CC BY 4.0, as described at http://creativecommons.org/licenses/by/4.0/},
+  langid = {english}
 }
 
 @misc{vyasFastTransformersClustered2020,
