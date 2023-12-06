@@ -1,3 +1,17 @@
+@misc{abnarQuantifyingAttentionFlow2020,
+  title = {Quantifying {{Attention Flow}} in {{Transformers}}},
+  author = {Abnar, Samira and Zuidema, Willem},
+  year = {2020},
+  month = may,
+  number = {arXiv:2005.00928},
+  eprint = {2005.00928},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  abstract = {In the Transformer model, "self-attention" combines information from attended embeddings into the representation of the focal embedding in the next layer. Thus, across layers of the Transformer, information originating from different tokens gets increasingly mixed. This makes attention weights unreliable as explanations probes. In this paper, we consider the problem of quantifying this flow of information through self-attention. We propose two methods for approximating the attention to input tokens given attention weights, attention rollout and attention flow, as post hoc methods when we use attention weights as the relative relevance of the input tokens. We show that these methods give complementary views on the flow of information, and compared to raw attention, both yield higher correlations with importance scores of input tokens obtained using an ablation method and input gradients.},
+  archiveprefix = {arXiv}
+}
+
 @article{aljanahiIntroductionAnalysisSingleCell2018,
   title = {An {{Introduction}} to the {{Analysis}} of {{Single-Cell RNA-Sequencing Data}}},
   author = {AlJanahi, Aisha A. and Danielsen, Mark and Dunbar, Cynthia E.},
@@ -93,6 +107,21 @@
   pmid = {4913914}
 }
 
+@misc{cuiScFormerUniversalRepresentation2022,
+  title = {{{scFormer}}: {{A Universal Representation Learning Approach}} for {{Single-Cell Data Using Transformers}}},
+  shorttitle = {{{scFormer}}},
+  author = {Cui, Haotian and Wang, Chloe and Maan, Hassaan and Duan, Nan and Wang, Bo},
+  year = {2022},
+  month = nov,
+  pages = {2022.11.20.517285},
+  publisher = {{bioRxiv}},
+  doi = {10.1101/2022.11.20.517285},
+  abstract = {Single-cell sequencing has emerged as a promising technique to decode cellular heterogeneity and analyze gene functions. With the high throughput of modern techniques and resulting large-scale sequencing data, deep learning has been used extensively to learn representations of individual cells for downstream tasks. However, most existing methods rely on fully connected networks and are unable to model complex relationships between both cell and gene representations. We hereby propose scFormer, a novel transformer-based deep learning framework to jointly optimize cell and gene embeddings for single-cell biology in an unsupervised manner. By drawing parallels between natural language processing and genomics, scFormer applies self-attention to learn salient gene and cell embeddings through masked gene modelling. scFormer provides a unified framework to readily address a variety of downstream tasks such as data integration, analysis of gene function, and perturbation response prediction. Extensive experiments using scFormer show state-of-the-art performance on seven datasets across the relevant tasks. The scFormer model implementation is available at https://github.com/bowang-lab/scFormer.},
+  chapter = {New Results},
+  copyright = {© 2022, Posted by Cold Spring Harbor Laboratory. This pre-print is available under a Creative Commons License (Attribution-NonCommercial-NoDerivs 4.0 International), CC BY-NC-ND 4.0, as described at http://creativecommons.org/licenses/by-nc-nd/4.0/},
+  langid = {english}
+}
+
 @misc{daiTransformerXLAttentiveLanguage2019,
   title = {Transformer-{{XL}}: {{Attentive Language Models Beyond}} a {{Fixed-Length Context}}},
   shorttitle = {Transformer-{{XL}}},
@@ -109,6 +138,11 @@
   archiveprefix = {arXiv}
 }
 
+@misc{DeepLearningTackles,
+  title = {Deep Learning Tackles Single-Cell Analysis—a Survey of Deep Learning for {{scRNA-seq}} Analysis | {{Briefings}} in {{Bioinformatics}} | {{Oxford Academic}}},
+  howpublished = {https://academic.oup.com/bib/article/23/1/bbab531/6470968?login=true}
+}
+
 @article{farrellSinglecellReconstructionDevelopmental2018,
   title = {Single-Cell Reconstruction of Developmental Trajectories during Zebrafish Embryogenesis},
   author = {Farrell, Jeffrey A. and Wang, Yiqun and Riesenfeld, Samantha J. and Shekhar, Karthik and Regev, Aviv and Schier, Alexander F.},
@@ -121,6 +155,53 @@
   publisher = {{American Association for the Advancement of Science}},
   doi = {10.1126/science.aar3131},
   abstract = {During embryogenesis, cells acquire distinct fates by transitioning through transcriptional states. To uncover these transcriptional trajectories during zebrafish embryogenesis, we sequenced 38,731 cells and developed URD, a simulated diffusion-based computational reconstruction method. URD identified the trajectories of 25 cell types through early somitogenesis, gene expression along them, and their spatial origin in the blastula. Analysis of Nodal signaling mutants revealed that their transcriptomes were canalized into a subset of wild-type transcriptional trajectories. Some wild-type developmental branch points contained cells that express genes characteristic of multiple fates. These cells appeared to trans-specify from one fate to another. These findings reconstruct the transcriptional trajectories of a vertebrate embryo, highlight the concurrent canalization and plasticity of embryonic specification, and provide a framework with which to reconstruct complex developmental trees from single-cell transcriptomes.}
+}
+
+@article{floresDeepLearningTackles2022,
+  title = {Deep Learning Tackles Single-Cell Analysis-a Survey of Deep Learning for {{scRNA-seq}} Analysis},
+  author = {Flores, Mario and Liu, Zhentao and Zhang, Tinghe and Hasib, Md Musaddaqui and Chiu, Yu-Chiao and Ye, Zhenqing and Paniagua, Karla and Jo, Sumin and Zhang, Jianqiu and Gao, Shou-Jiang and Jin, Yu-Fang and Chen, Yidong and Huang, Yufei},
+  year = {2022},
+  month = jan,
+  journal = {Briefings in Bioinformatics},
+  volume = {23},
+  number = {1},
+  pages = {bbab531},
+  issn = {1477-4054},
+  doi = {10.1093/bib/bbab531},
+  abstract = {Since its selection as the method of the year in 2013, single-cell technologies have become mature enough to provide answers to complex research questions. With the growth of single-cell profiling technologies, there has also been a significant increase in data collected from single-cell profilings, resulting in computational challenges to process these massive and complicated datasets. To address these challenges, deep learning (DL) is positioned as a competitive alternative for single-cell analyses besides the traditional machine learning approaches. Here, we survey a total of 25 DL algorithms and their applicability for a specific step in the single cell RNA-seq processing pipeline. Specifically, we establish a unified mathematical representation of variational autoencoder, autoencoder, generative adversarial network and supervised DL models, compare the training strategies and loss functions for these models, and relate the loss functions of these models to specific objectives of the data processing step. Such a presentation will allow readers to choose suitable algorithms for their particular objective at each step in the pipeline. We envision that this survey will serve as an important information portal for learning the application of DL for scRNA-seq analysis and inspire innovative uses of DL to address a broader range of new challenges in emerging multi-omics and spatial single-cell sequencing.},
+  langid = {english},
+  pmcid = {PMC8769926},
+  pmid = {34929734}
+}
+
+@article{floresDeepLearningTackles2022a,
+  title = {Deep Learning Tackles Single-Cell Analysis—a Survey of Deep Learning for {{scRNA-seq}} Analysis},
+  author = {Flores, Mario and Liu, Zhentao and Zhang, Tinghe and Hasib, Md Musaddaqui and Chiu, Yu-Chiao and Ye, Zhenqing and Paniagua, Karla and Jo, Sumin and Zhang, Jianqiu and Gao, Shou-Jiang and Jin, Yu-Fang and Chen, Yidong and Huang, Yufei},
+  year = {2022},
+  month = jan,
+  journal = {Briefings in Bioinformatics},
+  volume = {23},
+  number = {1},
+  pages = {bbab531},
+  issn = {1467-5463, 1477-4054},
+  doi = {10.1093/bib/bbab531},
+  abstract = {Since its selection as the method of the year in 2013, single-cell technologies have become mature enough to provide answers to complex research questions. With the growth of single-cell profiling technologies, there has also been a significant increase in data collected from single-cell profilings, resulting in computational challenges to process these massive and complicated datasets. To address these challenges, deep learning (DL) is positioned as a competitive alternative for single-cell analyses besides the traditional machine learning approaches. Here, we survey a total of 25 DL algorithms and their applicability for a specific step in the single cell RNA-seq processing pipeline. Specifically, we establish a unified mathematical representation of variational autoencoder, autoencoder, generative adversarial network and supervised DL models, compare the training strategies and loss functions for these models, and relate the loss functions of these models to specific objectives of the data processing step. Such a presentation will allow readers to choose suitable algorithms for their particular objective at each step in the pipeline. We envision that this survey will serve as an important information portal for learning the application of DL for scRNA-seq analysis and inspire innovative uses of DL to address a broader range of new challenges in emerging multi-omics and spatial single-cell sequencing.},
+  langid = {english}
+}
+
+@article{floresDeepLearningTackles2022b,
+  title = {Deep Learning Tackles Single-Cell Analysis—a Survey of Deep Learning for {{scRNA-seq}} Analysis},
+  author = {Flores, Mario and Liu, Zhentao and Zhang, Tinghe and Hasib, Md Musaddaqui and Chiu, Yu-Chiao and Ye, Zhenqing and Paniagua, Karla and Jo, Sumin and Zhang, Jianqiu and Gao, Shou-Jiang and Jin, Yu-Fang and Chen, Yidong and Huang, Yufei},
+  year = {2022},
+  month = jan,
+  journal = {Briefings in Bioinformatics},
+  volume = {23},
+  number = {1},
+  pages = {bbab531},
+  issn = {1467-5463, 1477-4054},
+  doi = {10.1093/bib/bbab531},
+  abstract = {Since its selection as the method of the year in 2013, single-cell technologies have become mature enough to provide answers to complex research questions. With the growth of single-cell profiling technologies, there has also been a significant increase in data collected from single-cell profilings, resulting in computational challenges to process these massive and complicated datasets. To address these challenges, deep learning (DL) is positioned as a competitive alternative for single-cell analyses besides the traditional machine learning approaches. Here, we survey a total of 25 DL algorithms and their applicability for a specific step in the single cell RNA-seq processing pipeline. Specifically, we establish a unified mathematical representation of variational autoencoder, autoencoder, generative adversarial network and supervised DL models, compare the training strategies and loss functions for these models, and relate the loss functions of these models to specific objectives of the data processing step. Such a presentation will allow readers to choose suitable algorithms for their particular objective at each step in the pipeline. We envision that this survey will serve as an important information portal for learning the application of DL for scRNA-seq analysis and inspire innovative uses of DL to address a broader range of new challenges in emerging multi-omics and spatial single-cell sequencing.},
+  langid = {english}
 }
 
 @misc{grattarolaGraphNeuralNetworks2020,
@@ -271,6 +352,23 @@
   abstract = {Blood glucose levels are tightly controlled by the coordinated action of at least four cell types constituting pancreatic islets. Changes in the proportion and/or function of these cells are associated with genetic and molecular pathophysiology of monogenic, type 1, and type 2 (T2D) diabetes. Cellular heterogeneity impedes precise understanding of the molecular components of each islet cell type that govern islet (dys)function, particularly the less abundant delta and gamma/pancreatic polypeptide (PP) cells. Here, we report single-cell transcriptomes for 638 cells from nondiabetic (ND) and T2D human islet samples. Analyses of ND single-cell transcriptomes identified distinct alpha, beta, delta, and PP/gamma cell-type signatures. Genes linked to rare and common forms of islet dysfunction and diabetes were expressed in the delta and PP/gamma cell types. Moreover, this study revealed that delta cells specifically express receptors that receive and coordinate systemic cues from the leptin, ghrelin, and dopamine signaling pathways implicating them as integrators of central and peripheral metabolic signals into the pancreatic islet. Finally, single-cell transcriptome profiling revealed genes differentially regulated between T2D and ND alpha, beta, and delta cells that were undetectable in paired whole islet analyses. This study thus identifies fundamental cell-type–specific features of pancreatic islet (dys)function and provides a critical resource for comprehensive understanding of islet biology and diabetes pathogenesis.},
   langid = {english},
   pmid = {27864352}
+}
+
+@article{lotfollahiBiologicallyInformedDeep2023,
+  title = {Biologically Informed Deep Learning to Query Gene Programs in Single-Cell Atlases},
+  author = {Lotfollahi, Mohammad and Rybakov, Sergei and Hrovatin, Karin and {Hediyeh-zadeh}, Soroor and {Talavera-López}, Carlos and Misharin, Alexander V. and Theis, Fabian J.},
+  year = {2023},
+  month = feb,
+  journal = {Nature Cell Biology},
+  volume = {25},
+  number = {2},
+  pages = {337--350},
+  publisher = {{Nature Publishing Group}},
+  issn = {1476-4679},
+  doi = {10.1038/s41556-022-01072-x},
+  abstract = {The increasing availability of large-scale single-cell atlases has enabled the detailed description of cell states. In parallel, advances in deep learning allow rapid analysis of newly generated query datasets by mapping them into reference atlases. However, existing data transformations learned to map query data are not easily explainable using biologically known concepts such as genes or pathways. Here we propose expiMap, a biologically informed deep-learning architecture that enables single-cell reference mapping. ExpiMap learns to map cells into biologically understandable components representing known ‘gene programs’. The activity of each cell for a gene program is learned while simultaneously refining them and learning de novo programs. We show that expiMap compares favourably to existing methods while bringing an additional layer of interpretability to integrative single-cell analysis. Furthermore, we demonstrate its applicability to analyse single-cell perturbation responses in different tissues and species and resolve responses of patients who have coronavirus disease 2019 to different treatments across cell types.},
+  copyright = {2023 The Author(s)},
+  langid = {english}
 }
 
 @article{maMultiregionalSinglecellDissection2022,
@@ -447,6 +545,21 @@
   langid = {english},
   pmcid = {PMC7875333},
   pmid = {33431511}
+}
+
+@article{suDenoisingAdaptiveDeep2023,
+  title = {Denoising Adaptive Deep Clustering with Self-Attention Mechanism on Single-Cell Sequencing Data},
+  author = {Su, Yansen and Lin, Rongxin and Wang, Jing and Tan, Dayu and Zheng, Chunhou},
+  year = {2023},
+  month = mar,
+  journal = {Briefings in Bioinformatics},
+  volume = {24},
+  number = {2},
+  pages = {bbad021},
+  issn = {1467-5463, 1477-4054},
+  doi = {10.1093/bib/bbad021},
+  abstract = {A large number of works have presented the single-cell RNA sequencing (scRNA-seq) to study the diversity and biological functions of cells at the single-cell level. Clustering identifies unknown cell types, which is essential for downstream analysis of scRNA-seq samples. However, the high dimensionality, high noise and pervasive dropout rate of scRNA-seq samples have a significant challenge to the cluster analysis of scRNA-seq samples. Herein, we propose a new adaptive fuzzy clustering model based on the denoising autoencoder and self-attention mechanism called the scDASFK. It implements the comparative learning to integrate cell similar information into the clustering method and uses a deep denoising network module to denoise the data. scDASFK consists of a self-attention mechanism for further denoising where an adaptive clustering optimization function for iterative clustering is implemented. In order to make the denoised latent features better ref lect the cell structure, we introduce a new adaptive feedback mechanism to supervise the denoising process through the clustering results. Experiments on 16 real scRNA-seq datasets show that scDASFK performs well in terms of clustering accuracy, scalability and stability. Overall, scDASFK is an effective clustering model with great potential for scRNAseq samples analysis. Our scDASFK model codes are freely available at https://github.com/LRX2022/scDASFK.},
+  langid = {english}
 }
 
 @misc{thepandasdevelopmentteamPandasdevPandasPandas2023,

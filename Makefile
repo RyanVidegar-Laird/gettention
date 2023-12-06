@@ -7,8 +7,8 @@ snakemake:
 	docker run --rm --gpus all -v ${ROOT_DIR}:/app -w /app --entrypoint "" pytorch_gpu:latest snakemake --cores all
 
 render: 
-	cd ${ROOT_DIR}/report/mid; \
-	pdflatex  midway_report.tex; \
-	bibtex midway_report; \
-	pdflatex  midway_report.tex; \
-	pdflatex  midway_report.tex;
+	cd ${ROOT_DIR}/report/; \
+	pdflatex  final_report.tex; \
+	bibtex final_report; \
+	pdflatex  final_report.tex; \
+	pdflatex  final_report.tex;

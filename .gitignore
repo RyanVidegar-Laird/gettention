@@ -1,10 +1,10 @@
 # Project Specific
 /.snakemake/
-/report/*/*.aux
-/report/*/*.bbl
-/report/*/*.log
-/report/*/*.out
-/report/*/*.blg
+/report/*.aux
+/report/*.bbl
+/report/*.log
+/report/*.out
+/report/*.blg
 /data/pfalciparum/PlasmoDB*
 /data/pfalciparum/pf10xIDC*
 
