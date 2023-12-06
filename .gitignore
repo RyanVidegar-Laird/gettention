@@ -1,7 +1,4 @@
 # Project Specific
-## lock file should normally be commited, but Pytorch isn't
-## playing well with it. Let poetry resolve versions from Pyproject.toml instead
-poetry.lock
 /.snakemake/
 /report/*/*.aux
 /report/*/*.bbl
