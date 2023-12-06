@@ -11,8 +11,8 @@ rule train_performer_classifier:
 		train_idx = 'data/pfalciparum/train_indices.pkl',
 		ttest_idx = 'data/pfalciparum/test_indices.pkl',
 		model_weights = 'data/pfalciparum/performer_model_weights.pth',
-		train_losses = 'data/pfalciparum/performer_train_losses.pkl'
-		test_losses = 'data/pfalciparum/performer_train_losses.pkl'
+		train_losses = 'data/pfalciparum/performer_train_losses.pkl',
+		test_losses = 'data/pfalciparum/performer_test_losses.pkl'
 	shell:
 		"""
 		python {input.train_script}
