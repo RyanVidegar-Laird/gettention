@@ -1,6 +1,4 @@
-rule all:
-	input:
-		'data/pfalciparum/performer_model_weights.pth'
+rule all: input: 'data/pfalciparum/performer_model_weights.pth'
 		
 rule train_performer_classifier:
 	input: 
@@ -15,10 +13,11 @@ rule train_performer_classifier:
 		test_losses = 'data/pfalciparum/performer_test_losses.pkl'
 	shell:
 		"""
-		python {input.train_script}
+		python3 {input.train_script}
 		"""		
 
 rule fetch_process_pfaciparum:
+	localrule: True
 	input:
 		preprocess_script = 'src/python/00-preprocess_falciparum.py'
 	output:
