@@ -8,6 +8,8 @@ poetry.lock
 /report/*/*.log
 /report/*/*.out
 /report/*/*.blg
+/data/pfalciparum/PlasmoDB*
+/data/pfalciparum/pf10xIDC*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
