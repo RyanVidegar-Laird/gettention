@@ -1,6 +1,7 @@
 import torch
-import torch.nn as nn
+from torch import nn, Tensor
 from torch.amp import autocast
+from torch.nn import TransformerEncoder, TransformerEncoderLayer
 
 from performer_pytorch import Performer
 
@@ -8,7 +9,7 @@ from performer_pytorch import Performer
 # Performer
 class PerformerClassifier(nn.Module):
     """
-    [TODO] Document: Cell classifier using Performer...
+    Performer Classifier
     """
 
     # being very explicit in dims for sake of learning/consistency
@@ -68,3 +69,103 @@ class PerformerClassifier(nn.Module):
         # use linear classifier to predict N x D --> N x K_classes
         x = self.classifier(torch.squeeze(x, 0))
         return x
+
+
+class TransformerClassifier(nn.Module):
+    """
+    Transformer Classifier
+    """
+
+    def __init__(
+        self,
+        # number of classes in the model
+        num_classes: int,
+        # ntoken: number of expected genes
+        ntoken: int,
+        # d_model: dimension of encoder (choose)
+        d_model: int,
+        # number of heads in ``nn.MultiheadAttention``
+        nhead: int,
+        # d_hid: dimension of the feedforward network model, default is 200
+        d_hid: int,
+        # number of ``nn.TransformerEncoderLayer`` in ``nn.TransformerEncoder``
+        nlayers: int,
+        learning_rate: int,
+        # dropout: dropout value, default is 0.1, but set to 0.5
+        dropout: float = 0.5,
+    ):
+        super().__init__()
+        self.emb = torch.nn.Embedding(ntoken, d_model - 1)
+        self.d_emb = torch.tensor([d_model])
+
+        # unlike TOSICA, do not use positional encoding
+        # self.pos_encoder = PositionalEncoding(d_model, dropout)
+        encoder_layers = TransformerEncoderLayer(d_model, nhead, d_hid, dropout)
+
+        # TransformerEncoder is a stack of N encoder layers (6 in TOSICA)
+        self.transformer_encoder = TransformerEncoder(encoder_layers, nlayers)
+
+        # applies a linear transofmration to the data
+        self.linear = nn.Linear(d_model, num_classes)
+        self.d_model = d_model
+        self.lr = learning_rate
+
+        # Saving attention layer
+        # Adapted from: https://gist.github.com/airalcorn2/50ec06517ce96ecc143503e21fa6cb91?permalink_comment_id=4407423#gistcomment-4407423
+        # very memory intensive...
+        # Modify the self-attention block of the last layer to capture attention weight
+        # self.transformer_encoder.eval()
+
+        # Initialize a list to store attention from the last layer
+        self.last_layer_attention = None
+
+        # Register a hook to the last layer's self attention module
+        def save_last_layer_attention(module, input, output):
+            # Save only the attention weights, which are typically the second output from MultiheadAttention
+            self.last_layer_attention = output[1]
+
+        # save_output = SaveOutput()
+        patch_attention(self.transformer_encoder.layers[-1].self_attn)
+        hook_handle = self.transformer_encoder.layers[
+            -1
+        ].self_attn.register_forward_hook(save_last_layer_attention)
+
+    def get_last_layer_attention(self):
+        # Retrieve the stored attention weights
+        return self.last_layer_attention
+
+    def forward(self, x: Tensor) -> Tensor:
+        """
+        Arguments:
+            x: Tensor, shape ``[batch_cells, N_genes, 1_count]``
+
+        Returns:
+            output Tensor of shape 1xK class predictions
+        """
+        # x is a batch_size * m_genes * 1 count tensor from the data loadter
+        # concat each gene count values to the end of the embedding ---
+        # --> N_cells x M_genes x D_embedding (+1) tensor
+        batch_size = x.shape[0]
+        emb = self.emb.weight.expand(batch_size, -1, -1)
+        x = torch.concat((emb, x), 2)
+
+        # the transformer encoder layer
+        output = self.transformer_encoder(x)
+
+        output = output.mean(dim=1)
+
+        # the linear layer
+        output = self.linear(output)
+        return output
+
+
+def patch_attention(m):
+    forward_orig = m.forward
+
+    def wrap(*args, **kwargs):
+        kwargs["need_weights"] = True
+        kwargs["average_attn_weights"] = False
+
+        return forward_orig(*args, **kwargs)
+
+    m.forward = wrap

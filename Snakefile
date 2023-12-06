@@ -1,4 +1,24 @@
-rule all: input: 'data/pfalciparum/performer_model_weights.pth'
+rule all: 
+	input:
+		performer_weights = 'data/pfalciparum/performer_model_weights.pth',
+		transformer_weights = 'data/pfalciparum/transformer_model_weights.pth',
+
+# TODO! add basic arg parsing to train scripts to dedup
+
+rule train_transformer_classifier:
+	input: 
+		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad',
+		train_script = 'src/python/02-transformer_pfalci.py',
+		train_idx = 'data/pfalciparum/train_indices.pkl',
+		test_idx = 'data/pfalciparum/test_indices.pkl',
+	output:
+		model_weights = 'data/pfalciparum/transformer_model_weights.pth',
+		train_losses = 'data/pfalciparum/transformer_train_losses.pkl',
+		test_losses = 'data/pfalciparum/transformer_test_losses.pkl'
+	shell:
+		"""
+		python3 {input.train_script}
+		"""		
 		
 rule train_performer_classifier:
 	input: 
@@ -7,7 +27,7 @@ rule train_performer_classifier:
 	
 	output:
 		train_idx = 'data/pfalciparum/train_indices.pkl',
-		ttest_idx = 'data/pfalciparum/test_indices.pkl',
+		test_idx = 'data/pfalciparum/test_indices.pkl',
 		model_weights = 'data/pfalciparum/performer_model_weights.pth',
 		train_losses = 'data/pfalciparum/performer_train_losses.pkl',
 		test_losses = 'data/pfalciparum/performer_test_losses.pkl'
@@ -28,6 +48,7 @@ rule fetch_process_pfaciparum:
 		MCA_Commit = "4e19a713d0681b118cc7e229133489f039b8766b"
 	shell:
 		"""
+		mkdir -p data/pfalciparum
         curl -SsL https://raw.github.com/vhowick/MalariaCellAtlas/{params.MCA_Commit}/Expression_Matrices/10X/pf10xIDC/pf10xIDC_counts.csv.zip -o data/pfalciparum/pf10xIDC_counts.csv.zip
 
 		curl -SsL https://raw.githubusercontent.com/vhowick/MalariaCellAtlas/{params.MCA_Commit}/Expression_Matrices/10X/pf10xIDC/pf10xIDC_pheno.csv -o data/pfalciparum/pf10xIDC_pheno.csv
