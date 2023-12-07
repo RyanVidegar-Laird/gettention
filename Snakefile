@@ -1,13 +1,15 @@
 rule all: 
 	input:
-		performer_weights = 'data/pfalciparum/performer_model_weights.pth',
-		transformer_weights = 'data/pfalciparum/transformer_model_weights.pth',
+#		performer_weights = 'data/pfalciparum/performer_model_weights.pth',
+#		transformer_weights = 'data/pfalciparum/transformer_model_weights.pth',
+		tosica_weights = 'data/pfalciparum/model-*.pth',
 		liver = 'data/liver_atlas/info.txt',
-		anndata = 'data/liver_atlas/GSE151530.gz.h5ad'
-
+		anndata = 'data/liver_atlas/GSE151530.gz.h5ad',
+		test_idx = 'data/liver_atlas/test_indices.pkl'
+		
 # TODO! add basic arg parsing to train scripts to dedup
 
-rule train_transformer_classifier:
+rule train_pfalci_transformer_classifier:
 	input: 
 		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad',
 		train_script = 'src/python/02-transformer_pfalci.py',
@@ -22,7 +24,7 @@ rule train_transformer_classifier:
 		python3 {input.train_script}
 		"""		
 		
-rule train_performer_classifier:
+rule train_pfalci_performer_classifier:
 	input: 
 		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad',
 		train_script = 'src/python/01-performer_pfalci.py',
@@ -37,7 +39,23 @@ rule train_performer_classifier:
 		python3 {input.train_script}
 		"""		
 
-rule split_pfalciparum:
+rule train_pfalci_tosica:
+	input: 
+		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad',
+		train_script = 'src/python/03-tosica_pfalci.py',
+		train_idx = 'data/pfalciparum/train_indices.pkl',
+		test_idx = 'data/pfalciparum/test_indices.pkl',
+	output:
+		mask = 'data/pfalciparum/mask.npy',
+		pathway = 'data/pfalciparum/pathway.csv',
+		label_dict = 'data/pfalciparum/label_dictionary.csv',
+		model_weights = 'data/pfalciparum/model-*.pth'
+	shell:
+		"""
+		python3 {input.train_script}
+		"""		
+
+rule split_pfalci:
 	input:
 		script = 'src/python/split_pfalci.py',
 		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad'	
@@ -48,6 +66,18 @@ rule split_pfalciparum:
 		"""
 		python3 {input.script}	
 		"""
+rule split_liver:
+	input:
+		script = 'src/python/split_liver.py',
+		anndata = 'data/liver_atlas/GSE151530.gz.h5ad'	
+	output:		
+		train_idx = 'data/liver_atlas/train_indices.pkl',
+		test_idx = 'data/liver_atlas/test_indices.pkl',
+	shell:
+		"""
+		python3 {input.script}	
+		"""
+
 rule process_liver:
 	input:
 		script = 'src/python/preprocess_liver.py',
@@ -83,7 +113,7 @@ rule fetch_liver:
 		""" 
 		
 
-rule fetch_process_pfalciparum:
+rule fetch_process_pfalci:
 	localrule: True
 	input:
 		preprocess_script = 'src/python/00-preprocess_falciparum.py'
