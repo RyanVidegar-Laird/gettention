@@ -2,6 +2,8 @@ rule all:
 	input:
 		performer_weights = 'data/pfalciparum/performer_model_weights.pth',
 		transformer_weights = 'data/pfalciparum/transformer_model_weights.pth',
+		liver = 'data/liver_atlas/info.txt',
+		anndata = 'data/liver_atlas/GSE151530.gz.h5ad'
 
 # TODO! add basic arg parsing to train scripts to dedup
 
@@ -46,6 +48,40 @@ rule split_pfalciparum:
 		"""
 		python3 {input.script}	
 		"""
+rule process_liver:
+	input:
+		script = 'src/python/preprocess_liver.py',
+		info = 'data/liver_atlas/info.txt',
+		barcodes = 'data/liver_atlas/barcodes.tsv',
+		genes = 'data/liver_atlas/genes.tsv',
+		mtx = 'data/liver_atlas/matrix.mtx'
+	output:
+		anndata = 'data/liver_atlas/GSE151530.gz.h5ad'
+	shell:
+		"""
+		python3 {input.script}
+		"""
+rule fetch_liver:
+	params:
+		url = 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE151nnn/GSE151530/suppl'
+	output:
+		info = 'data/liver_atlas/info.txt',
+		barcodes = 'data/liver_atlas/barcodes.tsv',
+		genes = 'data/liver_atlas/genes.tsv',
+		mtx = 'data/liver_atlas/matrix.mtx'
+
+	shell:
+		"""
+		mkdir -p data/liver_atlas
+		curl -o - {params.url}/GSE151530_Info.txt.gz | gunzip > {output.info}
+
+		curl -o - {params.url}/GSE151530_barcodes.tsv.gz | gunzip > {output.barcodes}
+
+		curl -o - {params.url}/GSE151530_genes.tsv.gz | gunzip > {output.genes}
+		
+		curl -o - {params.url}/GSE151530_matrix.mtx.gz | gunzip > {output.mtx}
+		""" 
+		
 
 rule fetch_process_pfalciparum:
 	localrule: True
