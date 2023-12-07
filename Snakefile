@@ -2,7 +2,7 @@ rule all:
 	input:
 #		performer_weights = 'data/pfalciparum/performer_model_weights.pth',
 #		transformer_weights = 'data/pfalciparum/transformer_model_weights.pth',
-		tosica_weights = 'data/pfalciparum/model-*.pth',
+		tosica_mask = 'data/pfalciparum/tosica/mask.npy',
 		liver = 'data/liver_atlas/info.txt',
 		anndata = 'data/liver_atlas/GSE151530.gz.h5ad',
 		test_idx = 'data/liver_atlas/test_indices.pkl'
@@ -46,13 +46,17 @@ rule train_pfalci_tosica:
 		train_idx = 'data/pfalciparum/train_indices.pkl',
 		test_idx = 'data/pfalciparum/test_indices.pkl',
 	output:
-		mask = 'data/pfalciparum/mask.npy',
-		pathway = 'data/pfalciparum/pathway.csv',
-		label_dict = 'data/pfalciparum/label_dictionary.csv',
-		model_weights = 'data/pfalciparum/model-*.pth'
+		mask = 'data/pfalciparum/tosica/mask.npy',
+		pathway = 'data/pfalciparum/tosica/pathway.csv',
+		label_dict = 'data/pfalciparum/tosica/label_dictionary.csv',
+		#model_weights = 'data/pfalciparum/tosica_pfalci/model-*.pth'
 	shell:
 		"""
+		mkdir -p data/pfalciparum/tosica
 		python3 {input.train_script}
+		# tosica has bad file handling....
+		mv tosica_pfalci/* data/pfalciparum/tosica 
+		rm -rf tosica_pfalci
 		"""		
 
 rule split_pfalci:

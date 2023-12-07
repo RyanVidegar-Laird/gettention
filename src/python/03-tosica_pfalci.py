@@ -23,4 +23,4 @@ with (DATA_PATH / "train_indices.pkl").open("rb") as f:
 with (DATA_PATH / "test_indices.pkl").open("rb") as f:
     test_indices = pickle.load(f)
 
-TOSICA.train(adata[train_indices], gmt_path = None, label_name='bulk',project=DATA_PATH)
+TOSICA.train(adata[train_indices], gmt_path=None,epochs=5, label_name='bulk',project="tosica_pfalci")
