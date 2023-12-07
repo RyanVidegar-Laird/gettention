@@ -33,6 +33,14 @@ ipywidgets = "^8.1.1"
 
 [tool.poetry.group.extras.dependencies]
 snakemake = "^7.32.4"
+scipy = "*"
+scikit-misc = "*"
+louvain = "*"
+tensorboard = "*"
+protobuf = "*"
+einops = "*"
+pydot = "*"
+llvmlite = "*"
 
 [build-system]
 requires = ["poetry-core"]
