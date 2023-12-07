@@ -43,10 +43,10 @@ K_CLASSES = sc_data.labels.shape[1]
 
 model = TransformerClassifier(
     ntoken=M_GENES,
-    d_model=48,
+    d_model=64,
     nhead=2,
     d_hid=200,
-    nlayers=2,
+    nlayers=4,
     num_classes=K_CLASSES,
     learning_rate=1e-3,
 ).to(device)

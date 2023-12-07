@@ -12,7 +12,6 @@ from gettention.data import SCDataset
 from gettention.model import PerformerClassifier
 
 import numpy as np
-from sklearn.model_selection import train_test_split
 
 import pickle
 import logging
