@@ -47,25 +47,12 @@ model = PerformerClassifier(N_CELLS, M_GENES, K_CLASSES).to(device)
 N_EPOCHS = 50
 BATCH_SIZE = 8
 
-TEST_SIZE = 0.3
-SEED = 424242
+# Load train/test indices
+with (DATA_PATH / "train_indices.pkl").open("rb") as f:
+    train_indices = pickle.load(f)
 
-# https://stackoverflow.com/a/68338670
-#   generate indices: instead of the actual data, pass in integers instead
-train_indices, test_indices, _, _ = train_test_split(
-    range(len(sc_data)),
-    sc_data.labels.cpu(),
-    stratify=sc_data.labels.cpu(),
-    test_size=TEST_SIZE,
-    random_state=SEED,
-)
-
-# save train/test indices for comparing same train/test sets between methods
-idx_paths = [DATA_PATH / "train_indices.pkl", DATA_PATH / "test_indices.pkl"]
-
-for p, loader in dict(zip(idx_paths, [train_indices, test_indices])).items():
-    with p.open("wb") as f:
-        pickle.dump(loader, f)
+with (DATA_PATH / "test_indices.pkl").open("rb") as f:
+    test_indices = pickle.load(f)
 
 # generate subset based on indices
 train_split = Subset(sc_data, train_indices)

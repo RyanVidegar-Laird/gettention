@@ -23,11 +23,10 @@ rule train_transformer_classifier:
 rule train_performer_classifier:
 	input: 
 		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad',
-		train_script = 'src/python/01-performer_pfalci.py'
-	
-	output:
+		train_script = 'src/python/01-performer_pfalci.py',
 		train_idx = 'data/pfalciparum/train_indices.pkl',
 		test_idx = 'data/pfalciparum/test_indices.pkl',
+	output:
 		model_weights = 'data/pfalciparum/performer_model_weights.pth',
 		train_losses = 'data/pfalciparum/performer_train_losses.pkl',
 		test_losses = 'data/pfalciparum/performer_test_losses.pkl'
@@ -36,7 +35,19 @@ rule train_performer_classifier:
 		python3 {input.train_script}
 		"""		
 
-rule fetch_process_pfaciparum:
+rule split_pfalciparum:
+	input:
+		script = 'src/python/split_pfalci.py',
+		anndata = 'data/pfalciparum/pf10xIDC.gz.h5ad'	
+	output:		
+		train_idx = 'data/pfalciparum/train_indices.pkl',
+		test_idx = 'data/pfalciparum/test_indices.pkl',
+	shell:
+		"""
+		python3 {input.script}	
+		"""
+
+rule fetch_process_pfalciparum:
 	localrule: True
 	input:
 		preprocess_script = 'src/python/00-preprocess_falciparum.py'
