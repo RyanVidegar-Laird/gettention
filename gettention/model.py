@@ -155,7 +155,7 @@ class TransformerClassifier(nn.Module):
         output = output.mean(dim=1)
 
         # the linear layer
-        output = self.linear(output)
+        output = self.linear(torch.squeeze(output, 0))
         return output
 
 
