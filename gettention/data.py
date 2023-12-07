@@ -18,7 +18,13 @@ class SCDataset(Dataset):
         super().__init__()
 
         # get desired labels for all cells
-        cell_types = set(adata.obs[label_col])
+        cell_types = adata.obs[label_col].unique()
+
+        # NOTE! it's important to sort so class labels align
+        # when training and inference are split up. Make sure to properly split
+        # for train/test, such that all labels are present in both
+        # else this will still vary
+        cell_types = sorted(cell_types)
 
         # assign each cell label to an int
         self.class_map = {
